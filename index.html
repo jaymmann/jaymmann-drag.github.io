@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Fighting App</title>
+</head>
+<body>
+
+    <button class="btn-1">Fire Attack</button>
+    <button class="btn-2">Ice Attack</button>
+    <button class="btn-3">Poison Attack</button>
+
+    <div class="dragon"></div>
+
+
+    <script>
+        
+    var dragonDamage = 0;
+    function dragon(damage, attack) {
+        // if statements because of 3 different buttons.
+        if (attack == "Fire") {
+            // If the attack type is fire, it deals 1 less damage.
+            dragonDamage = dragonDamage + damage - 1;
+            document.body.querySelector(".dragon").innerHTML = "Dragon Damage: " + dragonDamage;
+        }
+        if (attack == "Ice") {
+            // If the attack type is ice, it deals 1 additional damage.
+            dragonDamage = dragonDamage + damage + 1;
+            document.body.querySelector(".dragon").innerHTML = "Dragon Damage: " + dragonDamage;
+        }
+        if (attack == "Poison") {
+            dragonDamage = dragonDamage + damage;
+            document.body.querySelector(".dragon").innerHTML = "Dragon Damage: " + dragonDamage;
+        }
+        if (dragonDamage >= 10) {
+            // When the Dragon's damage is 10 or more, the user wins and should be notified.
+            document.body.querySelector(".dragon").innerHTML = "Dragon Damage: " + dragonDamage + "<br>" + "You win!";
+        }
+    }
+    
+    document.body.querySelector(".btn-1").addEventListener("click", function () {
+        // One button is fire and deals 3 damage.
+        dragon(3, "Fire");
+    });
+    document.body.querySelector(".btn-2").addEventListener("click", function () {
+        // One button is ice and deals 1 damage.
+        dragon(1, "Ice");
+    });
+    document.body.querySelector(".btn-3").addEventListener("click", function () {
+        // One button is poison and deals 4 damage.
+        dragon(4, "Poison");
+    });
+
+    </script>
+
+</body>
+</html>
